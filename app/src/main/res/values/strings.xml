@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">TicTacToeGameTest</string>
+    <string name="my_font_style">casual</string>
+    <string name="my_font_style_monospace">monospace</string>
+</resources>
