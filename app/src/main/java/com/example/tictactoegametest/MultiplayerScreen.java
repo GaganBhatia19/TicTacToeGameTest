@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -45,24 +46,35 @@ public class MultiplayerScreen extends AppCompatActivity {
         roomNameET = findViewById(R.id.roomNameEditTextMP);
         roomPassET = findViewById(R.id.roomPasswordMP);
 
+
+        SharedPreferences sp = getSharedPreferences("multiplayerModeData",MODE_PRIVATE);
+
+        userNameET.setText(sp.getString("playerName",null));
+        roomNameET.setText(sp.getString("roomName",null));
+        roomPassET.setText(sp.getString("roomPassword",null));
+
         hostBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                    /*
                 String username = userNameET.getText().toString();
                 String roomName = roomNameET.getText().toString();
                 String roomPassword = roomPassET.getText().toString();
-                
-                if(username.isEmpty() || roomName.isEmpty() || roomPassword.isEmpty()){
+                String whiteSpaceRegex = "\\s*";
+
+
+                if(username.isEmpty() || roomName.isEmpty() || roomPassword.isEmpty() ||
+                        username.matches(whiteSpaceRegex) || roomName.matches(whiteSpaceRegex) || roomPassword.matches(whiteSpaceRegex)){
                     Toast.makeText(MultiplayerScreen.this, "Oops! something missing", Toast.LENGTH_SHORT).show();
+                } else if(roomPassword.length()<5){
+                    Toast.makeText(MultiplayerScreen.this, "Password too short", Toast.LENGTH_SHORT).show();
                 } else {
-//                    */
+                    SharedPreferences.Editor spedit = sp.edit();
+                    spedit.putString("hostPlayerName",username);
+                    spedit.putString("roomName",roomName);
+                    spedit.putString("roomPassword",roomPassword);
+                    spedit.apply();
+
                     String roomUniqueName = roomName.concat(roomPassword);
-//                    ROOM_NAME = roomUniqueName;
-                    ///////////////////////////////////////
-//                    String roomUniqueName = "testRoom";
-//                    String username = "host";
-                    ///////////////////////////////////////
                     DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("GameRooms");
                     databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
@@ -84,7 +96,7 @@ public class MultiplayerScreen extends AppCompatActivity {
                                                     int randomNumber = new Random().nextInt(2)+1;
                                                     databaseReference.child(roomUniqueName).child("current_player_turn").setValue(randomNumber==1?"HOST":"JOINED");
                                                     // do next
-                                                    Intent intent = new Intent(MultiplayerScreen.this,MultiplayerGamePlayScreen.class);
+                                                    Intent intent = new Intent(MultiplayerScreen.this,GameScreenForMultiplayer.class);
                                                     intent.putExtra("room_name_key",roomUniqueName);
                                                     intent.putExtra("player_role","HOST");
                                                     intent.putExtra("random_number",randomNumber);
@@ -120,18 +132,25 @@ public class MultiplayerScreen extends AppCompatActivity {
         joinBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                    /*
                 String username = userNameET.getText().toString();
                 String roomName = roomNameET.getText().toString();
                 String roomPassword = roomPassET.getText().toString();
+                String whiteSpaceRegex = "\\s*";
 
-                if(username.isEmpty() || roomName.isEmpty()|| roomPassword.isEmpty()){
+
+                if(username.isEmpty() || roomName.isEmpty()|| roomPassword.isEmpty() ||
+                        username.matches(whiteSpaceRegex) || roomName.matches(whiteSpaceRegex) || roomPassword.matches(whiteSpaceRegex)){
                     Toast.makeText(MultiplayerScreen.this, "Oops! something missing", Toast.LENGTH_SHORT).show();
+                } else if(roomPassword.length()<5){
+                    Toast.makeText(MultiplayerScreen.this, "Password too short", Toast.LENGTH_SHORT).show();
                 } else {
-//                     */
+                    SharedPreferences.Editor spedit = sp.edit();
+                    spedit.putString("playerName",username);
+                    spedit.putString("roomName",roomName);
+                    spedit.putString("roomPassword",roomPassword);
+                    spedit.apply();
+
                     String roomUniqueName = roomName.concat(roomPassword);
-//                    String roomUniqueName = "testRoom"; //
-//                    String username = "joiner"; //
                     DatabaseReference rootReference = FirebaseDatabase.getInstance().getReference("GameRooms");
                     rootReference.addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
@@ -145,7 +164,7 @@ public class MultiplayerScreen extends AppCompatActivity {
 
                                     Toast.makeText(MultiplayerScreen.this, "Room joined successfully", Toast.LENGTH_SHORT).show();
                                     // starting the new screen
-                                    Intent intent = new Intent(MultiplayerScreen.this,MultiplayerGamePlayScreen.class);
+                                    Intent intent = new Intent(MultiplayerScreen.this,GameScreenForMultiplayer.class);
                                     intent.putExtra("room_name_key",roomUniqueName);
                                     intent.putExtra("player_role","JOINED");
                                     startActivity(intent);
@@ -164,23 +183,4 @@ public class MultiplayerScreen extends AppCompatActivity {
             } //
         });
     }
-/*
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("GameRooms").child(ROOM_NAME);
-        if(reference!=null){
-            reference.removeValue().addOnCompleteListener(new OnCompleteListener<Void>() {
-                @Override
-                public void onComplete(@NonNull Task<Void> task) {
-                    if(task.isSuccessful()) {
-                        Toast.makeText(MultiplayerScreen.this, "Room removed", Toast.LENGTH_SHORT).show();
-                    } else {
-                        Toast.makeText(MultiplayerScreen.this, "Room not removed", Toast.LENGTH_SHORT).show();
-                    }
-                }
-            });
-        }
-    }
- */
 }

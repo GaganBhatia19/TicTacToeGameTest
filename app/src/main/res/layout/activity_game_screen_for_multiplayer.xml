@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".GameScreenForMultiplayer"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:background="@drawable/background2">
+
+    <TextView
+        android:id="@+id/playerTurnTextViewGMP"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:text="Player1 turn"
+        android:fontFamily="@string/my_font_style"
+        android:gravity="center"
+        android:textColor="@color/white"
+        android:textSize="30sp" />
+    <TextView
+        android:id="@+id/winnerDisplayNameGMP2"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="20dp"
+        android:fontFamily="@string/my_font_style"
+        android:gravity="center"
+        android:visibility="gone"
+        android:text="Player1 turn"
+        android:textColor="@color/white"
+        android:textSize="30sp" />
+    <!--    board comes here-->
+
+    <LinearLayout
+        android:id="@+id/grid"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <ImageButton
+                android:id="@+id/imageButton1GMP"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:background="@drawable/player_card_game_screen"
+                android:padding="10dp"
+                android:tag="0,0"/>
+
+            <ImageButton
+                android:id="@+id/imageButton2GMP"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:background="@drawable/player_card_game_screen"
+                android:padding="10dp"
+                android:tag="0,1"/>
+
+            <ImageButton
+                android:id="@+id/imageButton3GMP"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:background="@drawable/player_card_game_screen"
+                android:padding="10dp"
+                android:tag="0,2"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <ImageButton
+                android:id="@+id/imageButton4GMP"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:background="@drawable/player_card_game_screen"
+                android:padding="10dp"
+                android:tag="1,0"/>
+
+            <ImageButton
+                android:id="@+id/imageButton5GMP"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:background="@drawable/player_card_game_screen"
+                android:padding="10dp"
+                android:tag="1,1"/>
+
+            <ImageButton
+                android:id="@+id/imageButton6GMP"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:background="@drawable/player_card_game_screen"
+                android:padding="10dp"
+                android:tag="1,2"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <ImageButton
+                android:id="@+id/imageButton7GMP"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:background="@drawable/player_card_game_screen"
+                android:padding="10dp"
+                android:tag="2,0"/>
+
+            <ImageButton
+                android:id="@+id/imageButton8GMP"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:background="@drawable/player_card_game_screen"
+                android:padding="10dp"
+                android:tag="2,1"/>
+
+            <ImageButton
+                android:id="@+id/imageButton9GMP"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:background="@drawable/player_card_game_screen"
+                android:padding="10dp"
+                android:tag="2,2"/>
+        </LinearLayout>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="125dp"
+        android:gravity="center_horizontal"
+        android:layout_marginTop="50dp"
+        android:layout_marginBottom="50dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp">
+
+        <LinearLayout
+            android:id="@+id/player1LLayoutGMP"
+            android:layout_width="125dp"
+            android:layout_height="125dp"
+            android:layout_marginRight="10dp"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@drawable/round_xml_cross" />
+
+            <TextView
+                android:id="@+id/player1NameTextViewGMP"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_margin="6dp"
+                android:gravity="center"
+                android:text="Player1 Name"
+                android:fontFamily="@string/my_font_style"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="15sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/player2LLayoutGMP"
+            android:layout_width="125dp"
+            android:layout_height="125dp"
+            android:layout_marginLeft="10dp"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@drawable/round_circle_centre_hole" />
+
+            <TextView
+                android:id="@+id/player2NameTextViewGMP"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_margin="6dp"
+                android:gravity="center"
+                android:text="Player2 Name"
+                android:fontFamily="@string/my_font_style"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="15sp" />
+        </LinearLayout>
+    </LinearLayout>
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/restartGameBtnGMP"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginRight="50dp"
+        android:layout_marginLeft="50dp"
+        android:layout_marginBottom="20dp"
+        android:visibility="invisible"
+        android:background="@drawable/round_rectangle_button_background"
+        android:text="Restart Game"
+        android:fontFamily="@string/my_font_style"
+        android:textColor="@color/white" />
+</LinearLayout>

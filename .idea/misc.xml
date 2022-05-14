@@ -10,10 +10,12 @@
         <entry key="..\:/Development/Android Development Java/TicTacToeGameTest/app/src/main/res/drawable/round_rectangle_button_background.xml" value="0.1835" />
         <entry key="..\:/Development/Android Development Java/TicTacToeGameTest/app/src/main/res/drawable/round_xml_cross.xml" value="0.1" />
         <entry key="..\:/Development/Android Development Java/TicTacToeGameTest/app/src/main/res/layout/activity_game_screen.xml" value="0.25" />
+        <entry key="..\:/Development/Android Development Java/TicTacToeGameTest/app/src/main/res/layout/activity_game_screen_for_multiplayer.xml" value="0.13768115942028986" />
         <entry key="..\:/Development/Android Development Java/TicTacToeGameTest/app/src/main/res/layout/activity_game_screen_single_player.xml" value="0.33" />
         <entry key="..\:/Development/Android Development Java/TicTacToeGameTest/app/src/main/res/layout/activity_main.xml" value="0.22" />
         <entry key="..\:/Development/Android Development Java/TicTacToeGameTest/app/src/main/res/layout/activity_multiplayer_game_play_screen.xml" value="0.25" />
         <entry key="..\:/Development/Android Development Java/TicTacToeGameTest/app/src/main/res/layout/activity_multiplayer_screen.xml" value="0.25" />
+        <entry key="..\:/Development/Android Development Java/TicTacToeGameTest/app/src/main/res/layout/activity_test_data_change.xml" value="0.33" />
         <entry key="..\:/Development/Android Development Java/TicTacToeGameTest/app/src/main/res/layout/activity_two_player_screen.xml" value="0.22" />
         <entry key="..\:/Development/Android Development Java/TicTacToeGameTest/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.1" />
       </map>

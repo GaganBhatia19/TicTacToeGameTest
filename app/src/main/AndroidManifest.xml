@@ -12,6 +12,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.TicTacToeGameTest">
         <activity
+            android:name=".TestDataChange"
+            android:exported="false" />
+        <activity
+            android:name=".GameScreenForMultiplayer"
+            android:exported="false" />
+        <activity
             android:name=".MultiplayerGamePlayScreen"
             android:exported="false" />
         <activity
